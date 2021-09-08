@@ -11,30 +11,39 @@ namespace Calculator
 
             Console.WriteLine("Enter an operator: ");
             string op = Console.ReadLine();
-            Console.WriteLine("Enter the first number: ");
-            int num1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the second number: ");
-            int num2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("How many numbers do you want to " + op);
+            int iterations = int.Parse(Console.ReadLine());
 
-            int res = 0;
+            int[] inputs = new int[iterations];
 
-            switch (op)
+            for (int i = 0; i < iterations; i++)
             {
-                case "+":
-                    res = num1 + num2;
-                    break;
-                case "-":
-                    res = num1 - num2;
-                    break;
-                case "*":
-                    res = num1 * num2;
-                    break;
-                case "/":
-                    res = num1 / num2;
-                    break;
+                Console.WriteLine("Enter number " + (i + 1));
+                inputs[i] = int.Parse(Console.ReadLine());
             }
 
-            Console.WriteLine($"{num1} {op} {num2} = {res}");
+            int res = inputs[0];
+
+            for (int i = 1; i < inputs.Length; i++)
+            {
+                switch (op)
+                {
+                    case "+":
+                        res += inputs[i];
+                        break;
+                    case "-":
+                        res -= inputs[i];
+                        break;
+                    case "*":
+                        res *= inputs[i];
+                        break;
+                    case "/":
+                        res /= inputs[i];
+                        break;
+                }
+            }
+
+            Console.WriteLine($"The answer is {res}");
         }
     }
 }
